@@ -29,7 +29,7 @@
       function draw() {
         background(51)
         let timeNow = now()
-        let rectHeight = windowHeight - ((timeNow - startTime) / (dateLimit - startTime) * windowHeight)
+        let rectHeight = ((timeNow - startTime) / (dateLimit - startTime) * windowHeight)
         let wordRemain = round(words * (dateLimit - timeNow) / (dateLimit - startTime))
 
         fill('blue')
