@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Countdown</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
+    <style media="screen"> * { margin: 0 } </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      let words = 0
+      let time  = 0
+      let startTime = null
+      let dateLimit = null
+
+      function now() {
+        return new Date().getTime()
+      }
+
+      function setup() {
+        words = prompt('How many words?')
+        time  = prompt('In how many minutes?')
+        startTime = now()
+        dateLimit = startTime + (time * 60 * 1000)
+        createCanvas(windowWidth,windowHeight)
+        background(51)
+      }
+
+      function draw() {
+        background(51)
+        let timeNow = now()
+        let rectHeight = windowHeight - ((timeNow - startTime) / (dateLimit - startTime) * windowHeight)
+        let wordRemain = round(words * (dateLimit - timeNow) / (dateLimit - startTime))
+
+        fill('blue')
+        rect(0, rectHeight, windowWidth, windowHeight - rectHeight)
+        textSize(64)
+        fill('white')
+        text(wordRemain, windowWidth / 2, windowHeight / 2)
+      }
+
+    </script>
+  </body>
+</html>
